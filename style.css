@@ -1,3 +1,24 @@
-p {
-    text-align: center;
+.centering {
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.card {
+    font-family:'Courier New', Courier, monospace;
+    font-weight: 900;
+    font-size: 400%;
+}
+
+.match {
+    font-family: cursive;
+    font-weight: 900;
+    font-size: 350%;
+}
+
+.buttons {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding: 10px 25px;
+    display: grid;
 }
