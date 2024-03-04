@@ -5,6 +5,11 @@
     transform: translate(-50%,-50%);
 }
 
+.border {
+    border: 2px solid;
+    padding: 5%;
+}
+
 .card {
     font-family:'Courier New', Courier, monospace;
     font-weight: 900;
