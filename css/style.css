@@ -27,3 +27,15 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 10px 25px;
 }
+
+.center-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: larger;
+}
+
+.buttons-postion {
+    position: absolute;
+    top: 25%;
+    left: 2.5%;
+}
