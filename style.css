@@ -1,6 +1,6 @@
 .centering {
     position:absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%,-50%);
 }
@@ -14,11 +14,11 @@
 .match {
     font-family: cursive;
     font-weight: 900;
-    font-size: 350%;
+    font-size: 300%;
 }
 
 .buttons {
+    display:inline-flexbox;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 10px 25px;
-    display: grid;
 }
