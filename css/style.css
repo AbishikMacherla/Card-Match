@@ -39,3 +39,25 @@
     top: 25%;
     left: 2.5%;
 }
+
+.grid-container {
+    display: grid;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    gap: 20px;
+    grid-template-columns: 80px 80px 80px;
+    padding: 5px;
+}
+
+.grid-item {
+    padding:50px 50px;
+    text-align: center;
+}
+
+.img {
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+  }
+
