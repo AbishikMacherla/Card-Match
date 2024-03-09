@@ -43,10 +43,11 @@
 .grid-container {
     display: grid;
     position: absolute;
-    top: 20%;
-    left: 40%;
-    gap: 20px;
-    grid-template-columns: 80px 80px 80px;
+    top: 8%;
+    left: 35%;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3,90px);
+    grid-template-rows: repeat(3,140px);
     padding: 5px;
 }
 
@@ -55,9 +56,22 @@
     text-align: center;
 }
 
-.img {
-    border-radius: 4px;
-    padding: 5px;
-    width: 150px;
-  }
+.counter-box {
+    height: 50px;
+    width: 100px;
+    border: thick;
+    border-style: double;
+    border-color: black;
+}
 
+.sum-counter-position {
+    position: absolute;
+    top: 25%;
+    left: 100%;
+}
+
+.score-counter-position {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+}
