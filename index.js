@@ -17,5 +17,3 @@ let cards = arrayOfNumbers(card_values, suites);
 for (let index = 0; index < cards.length; index++) {
     console.log(cards[index]);
 }
-
-alert("hai");
