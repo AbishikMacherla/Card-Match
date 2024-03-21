@@ -48,8 +48,6 @@ SumOfTheCardValues(cards);
 for (let index = 0; index < cards.length; index++) {
     console.log(cards[index]);
 }
-<<<<<<< Updated upstream
-=======
 
 const buttons = document.querySelectorAll('button');
 
@@ -58,4 +56,3 @@ for (let i = 0; i < buttons.length; i++) {
         console.log(buttons[i].id);
     });
 }
->>>>>>> Stashed changes
