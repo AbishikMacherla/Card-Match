@@ -65,13 +65,27 @@
 }
 
 .sum-counter-position {
+    display: flex;
     position: absolute;
     top: 25%;
-    left: 95%;
+    left: 65%;
+}
+
+.label-sum {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bolder;
+}
+
+.center-sum {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bolder;
+    font-size: 160%;
+    padding: 12% 34%;
 }
 
 .score-counter-position {
+    display: flex;
     position: absolute;
     top: 50%;
-    left: 95%;
+    left: 65%;
 }

@@ -32,11 +32,18 @@ function SumOfTheCardValues(cards) {
         let card_value = card_values.indexOf(cards[i].card_number) + 1;
         sum = sum + card_value;
     }
-    console.log("sum == ",sum);
+    document.getElementById("sum_of_cards").innerHTML = `${sum}`;
+    return sum;
 }
 
 function ValidateUserInput() {
+    const buttons = document.querySelectorAll('button');
 
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].addEventListener('click', function() {
+            console.log(buttons[i].id);
+        });
+    }
 }
 
 let card_values = ["A","2","3","4","5","6","7","8","9","10","J","K","Q"];
@@ -44,15 +51,8 @@ let suites = ["Diamond","Heart","Spades","Clover"];
 
 let cards = ArrayOfNumbers(card_values, suites);
 SumOfTheCardValues(cards);
+ValidateUserInput();
 
 for (let index = 0; index < cards.length; index++) {
     console.log(cards[index]);
-}
-
-const buttons = document.querySelectorAll('button');
-
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function() {
-        console.log(buttons[i].id);
-    });
 }
