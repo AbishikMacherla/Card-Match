@@ -67,11 +67,11 @@
 .sum-counter-position {
     position: absolute;
     top: 25%;
-    left: 100%;
+    left: 95%;
 }
 
 .score-counter-position {
     position: absolute;
     top: 50%;
-    left: 100%;
+    left: 95%;
 }
