@@ -36,12 +36,15 @@ function SumOfTheCardValues(cards) {
     return sum;
 }
 
-function ValidateUserInput() {
+function ValidateUserInput(buttonValue) {
     const buttons = document.querySelectorAll('button');
-
+    console.log(buttonValue);
+    let [suite, number] = buttonValue.split("_");
+    console.log(suite);
+    console.log(number);
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function() {
-            console.log(buttons[i].id);
+            //console.log(buttons[i].id);
         });
     }
 }
