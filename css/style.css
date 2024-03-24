@@ -28,26 +28,6 @@
     padding: 10px 25px;
 }
 
-.overall-page-layout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
-
-.card-number-btn{
-    width: 50px;
-    height: 30px;
-}
-
-.card-number-td{
-    padding: 10px;
-}
-.counter-position {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-}
 .center-title {
     text-align: center;
     font-weight: 600;
@@ -55,27 +35,25 @@
 }
 
 .buttons-postion {
-    display: flex;
+    position: absolute;
     top: 25%;
     left: 2.5%;
 }
 
 .grid-container {
     display: grid;
-    width: 500px;
+    position: absolute;
     top: 8%;
     left: 35%;
-    grid-gap: 30px;
-    /* grid-template-columns: repeat(3); */
-    grid-template-rows: repeat(3,200px);
-    grid-auto-flow: column;
+    grid-gap: 50px;
+    grid-template-columns: repeat(3,90px);
+    grid-template-rows: repeat(3,140px);
     padding: 5px;
 }
 
 .grid-item {
-    /* padding:50px 50px; */
+    padding:50px 50px;
     text-align: center;
-    /* display: flex; */
 }
 
 .counter-box {
@@ -86,16 +64,16 @@
     border-color: black;
 }
 
-/* .sum-counter-position {
+.sum-counter-position {
+    display: flex;
     position: absolute;
     top: 25%;
     left: 65%;
-} */
+}
 
 .label-sum {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight:bolder;
-    font-size: larger;
 }
 
 .center-sum {
@@ -105,14 +83,9 @@
     padding: 12% 34%;
 }
 
-/*.score-counter-position {
+.score-counter-position {
+    display: flex;
     position: absolute;
     top: 50%;
     left: 65%;
-}
-*/
-.label-score {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-weight: bolder;
-    font-size: larger;
 }
