@@ -86,20 +86,20 @@ function ValidateUserInput(button) {
 
 
 function ReplaceCardImage(newSource, buttonId) {
-    const matrix = ["11","12","13","21","22","23","31","32","33"];
+    const matrix = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
     let image_reveal = [];
 
     for (let position = 0; position < matrix.length; position++) {
         var image_id = "A" + matrix[position];
-        image_reveal.push({image_position: image_id, isopen: false});
+        image_reveal.push({ image_position: image_id, isopen: false });
     }
     image_reveal.forEach(image => {
-            let imageId = image.image_position;
-            var imageElement = document.getElementById(imageId);
-            if (image.isopen === false) {
-                imageElement.src = newSource;
-                image.isopen = true;
-            }
+        let imageId = image.image_position;
+        var imageElement = document.getElementById(imageId);
+        if (image.isopen === false) {
+            imageElement.src = newSource;
+            image.isopen = true;
+        }
     });
 }
 
