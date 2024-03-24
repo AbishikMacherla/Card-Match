@@ -1,43 +1,25 @@
-const suits = ["Diamond", "Heart", "Spades", "Clover"];
-const values = ["Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
+//Javascript from webpage
 
-const table = document.querySelector('table');
+function CreateButtons(values, suites) {
+    const table = document.querySelector('table');
 
-for (let value of values) {
-    const row = document.createElement('tr');
-
-    for (let suit of suits) {
-        const button = document.createElement('button');
-        button.textContent = value;
-        button.id = `${suit}_${value}`;
-        button.addEventListener('click', () => ValidateUserInput(button.value));
-        row.appendChild(button);
-    }
-    table.appendChild(row);
-}
-
-function CreateMatrix() {
-    const imagePath = "css/back_of_card.png";
-    
-    const gridContainer = document.querySelector(".grid-matrix");
-    
-    for (let i = 0; i < 9; i++) {
-        const gridItem = document.createElement("div");
-        gridItem.classList.add("grid-item");
-    
-        const image = document.createElement("img");
-        image.src = imagePath;
-        image.alt = "back_of_card";
-        image.style.width = "85%";
-    
-        gridItem.appendChild(image);
-        gridContainer.appendChild(gridItem);
+    for (let value of values) {
+        const row = document.createElement('tr');
+        for (let suit of suites) {
+            const tabledata = document.createElement('td');
+            const button = document.createElement('button');
+            button.textContent = value;
+            button.classList.add("btn-primary");
+            button.classList.add("card-number-btn");
+            button.id = `${suit}_${value}`;
+            button.addEventListener('click', () => ValidateUserInput(button));
+            tabledata.appendChild(button);
+            tabledata.classList.add("card-number-td");
+            row.appendChild(tabledata);
+        }
+        table.appendChild(row);
     }
 }
-
-document.addEventListener("DOMContentLoaded", function() {
-    CreateMatrix();
-});
 
 function ArrayOfNumbers(numbers, kind) {
     let cards = [];
@@ -60,33 +42,45 @@ function ArrayOfNumbers(numbers, kind) {
 function SumOfTheCardValues(cards) {
     let sum = 0;
     for (let card of cards) {
-        let card_value = card_values.indexOf(card.card_number) + 1;
+        let card_value = values.indexOf(card.card_number) + 1;
         sum = sum + card_value;
     }
     document.getElementById("sum_of_cards").innerHTML = `${sum}`;
     return sum;
 }
-
-function ValidateUserInput(buttonValue) {
-    console.log(buttonValue);
-    let [suite, number] = buttonValue.split("_");
-    console.log(suite);
-    console.log(number);
+const buttons = document.querySelectorAll('button');
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+        ValidateUserInput(buttons[i]);
+    });
 }
 
-let card_values = ["A","2","3","4","5","6","7","8","9","10","J","K","Q"];
-let suites = ["Diamond","Heart","Spades","Clover"];
+let score = 0;
 
-let cards = ArrayOfNumbers(card_values, suites);
+function ValidateUserInput(button) {
+    const clicked_cardSuite = button.id.split('_')[0];
+    const clicked_cardNumber = button.id.split('_')[1];
+    console.log(clicked_cardSuite);
+    console.log(clicked_cardNumber);
+    const randomCard = cards.find(card => card.card_suite === clicked_cardSuite && card.card_number === clicked_cardNumber);
+
+    if (randomCard) {
+        alert("You clicked the right card");
+        score = score + 100;
+        document.getElementById("scores").innerHTML = `${score}`;
+    } else {
+        alert("You clicked the wrong card");
+    }
+}
+
+const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
+const suites = ["Diamond", "Heart", "Spades", "Clover"];
+
+CreateButtons(values, suites);
+
+let cards = ArrayOfNumbers(values, suites);
 for (let card of cards) {
     console.log(card);
 }
 
 SumOfTheCardValues(cards);
-
-const buttons = document.querySelectorAll('button');
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function() {
-        console.log(buttons[i].id);
-    });
-}
