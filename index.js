@@ -19,6 +19,29 @@ function CreateButtons(values,suites) {
     }
 }
 
+function CreateMatrix() {
+    const imagePath = "css/back_of_card.png";
+    
+    const gridContainer = document.querySelector(".grid-matrix");
+    
+    for (let i = 0; i < 9; i++) {
+        const gridItem = document.createElement("div");
+        gridItem.classList.add("grid-item");
+    
+        const image = document.createElement("img");
+        image.src = imagePath;
+        image.alt = "back_of_card";
+        image.style.width = "85%";
+    
+        gridItem.appendChild(image);
+        gridContainer.appendChild(gridItem);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    CreateMatrix();
+});
+
 function ArrayOfNumbers(numbers, kind) {
     let cards = [];
     let card = new Set();
