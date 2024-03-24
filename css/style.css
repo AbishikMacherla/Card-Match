@@ -69,6 +69,10 @@
     padding: 5px;
 }
 
+.image-style {
+    width: 115px;
+}
+
 .grid-item {
     text-align: center;
 }
@@ -95,7 +99,8 @@
 }
 
 .center-sum,
-.center-score {
+.center-score,
+.center-lives {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     font-size: 160%;

@@ -1,5 +1,3 @@
-//Javascript from webpage
-
 function CreateButtons(values, suites) {
     const table = document.querySelector('table');
 
@@ -56,6 +54,8 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 let score = 0;
+let lives = 15;
+document.getElementById("lives").innerHTML = `${lives}`;
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
@@ -68,9 +68,26 @@ function ValidateUserInput(button) {
         alert("You clicked the right card");
         score = score + 100;
         document.getElementById("scores").innerHTML = `${score}`;
+        button.disabled = true;
+
     } else {
         alert("You clicked the wrong card");
+        button.disabled = true;
+        lives = lives - 1;
+        document.getElementById("lives").innerHTML = `${lives}`;
     }
+    if (lives === 0) {
+        alert("Game Over!");
+
+    }
+}
+
+function SumOfTheCardValues(cards, cardValue, operation) {
+
+}
+
+function ReplaceCardImage () {
+    
 }
 
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
