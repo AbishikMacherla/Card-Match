@@ -62,54 +62,45 @@ var display_lives = document.getElementById("lives").innerHTML = `${lives}`;
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
     const clicked_cardNumber = button.id.split('_')[1];
-    //var newSrc = "card-assets/"+${button.id}+".svg";
-    var newSrc = "card-assets/2_of_clubs.svg";
-    console.log(clicked_cardSuite);
-    console.log(clicked_cardNumber);
     const randomCard = cards.find(card => card.card_suite === clicked_cardSuite && card.card_number === clicked_cardNumber);
+    var newSource = "card-assets/" + `${button.id}` + ".svg";
 
     if (randomCard) {
         alert("You clicked the right card");
         score = score + 100;
-        //document.getElementById("scores").innerHTML = `${score}`;
         // button.disabled = true;
         display_score;
         button.classList.add("disabled");
-        ReplaceCardImage(newSrc,button.id);
+        ReplaceCardImage(newSource, button.id);
 
     } else {
         alert("You clicked the wrong card");
         //button.disabled = true;
         lives = lives - 1;
-        //document.getElementById("lives").innerHTML = `${lives}`;
         display_lives;
     }
     if (lives === 0) {
         alert("Game Over!");
-
     }
 }
 
-let matrixPositions = [];
 
-function ReplaceCardImage(newSrc, buttonId) {
-    const matrixPosition = buttonId.split('_')[1];
+function ReplaceCardImage(newSource, buttonId) {
+    const matrix = ["11","12","13","21","22","23","31","32","33"];
+    let image_reveal = [];
 
-    let positionIndex = matrixPositions.findIndex(pos => pos.matrix_position === matrixPosition);
-
-    if (positionIndex === -1) {
-        matrixPositions.push({ matrix_position: matrixPosition, isOpen: false });
-        positionIndex = matrixPositions.length - 1;
+    for (let position = 0; position < matrix.length; position++) {
+        var image_id = "A" + matrix[position];
+        image_reveal.push({image_position: image_id, isopen: false});
     }
-
-    var image = document.getElementById(`A${matrixPosition}`);
-    image.src = newSrc;
-
-    matrixPositions[positionIndex].isOpen = true;
-
-    if (matrixPositions.every(pos => pos.isOpen)) {
-        alert("All matrix positions have been filled!");
-    }
+    image_reveal.forEach(image => {
+            let imageId = image.image_position;
+            var imageElement = document.getElementById(imageId);
+            if (image.isopen === false) {
+                imageElement.src = newSource;
+                image.isopen = true;
+            }
+    });
 }
 
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
