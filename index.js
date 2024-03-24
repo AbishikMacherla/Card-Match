@@ -7,6 +7,7 @@ function CreateButtons(values, suites) {
             const tabledata = document.createElement('td');
             const button = document.createElement('button');
             button.textContent = value;
+            button.classList.add("btn");
             button.classList.add("btn-primary");
             button.classList.add("card-number-btn");
             button.id = `${suit}_${value}`;
@@ -55,11 +56,14 @@ for (let i = 0; i < buttons.length; i++) {
 
 let score = 0;
 let lives = 15;
-document.getElementById("lives").innerHTML = `${lives}`;
+var display_score = document.getElementById("scores").innerHTML = `${score}`;
+var display_lives = document.getElementById("lives").innerHTML = `${lives}`;
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
     const clicked_cardNumber = button.id.split('_')[1];
+    //var newSrc = "card-assets/"+${button.id}+".svg";
+    var newSrc = "card-assets/2_of_clubs.svg";
     console.log(clicked_cardSuite);
     console.log(clicked_cardNumber);
     const randomCard = cards.find(card => card.card_suite === clicked_cardSuite && card.card_number === clicked_cardNumber);
@@ -67,14 +71,18 @@ function ValidateUserInput(button) {
     if (randomCard) {
         alert("You clicked the right card");
         score = score + 100;
-        document.getElementById("scores").innerHTML = `${score}`;
-        button.disabled = true;
+        //document.getElementById("scores").innerHTML = `${score}`;
+        // button.disabled = true;
+        display_score;
+        button.classList.add("disabled");
+        ReplaceCardImage(newSrc,button.id);
 
     } else {
         alert("You clicked the wrong card");
-        button.disabled = true;
+        //button.disabled = true;
         lives = lives - 1;
-        document.getElementById("lives").innerHTML = `${lives}`;
+        //document.getElementById("lives").innerHTML = `${lives}`;
+        display_lives;
     }
     if (lives === 0) {
         alert("Game Over!");
@@ -82,12 +90,26 @@ function ValidateUserInput(button) {
     }
 }
 
-function SumOfTheCardValues(cards, cardValue, operation) {
+let matrixPositions = [];
 
-}
+function ReplaceCardImage(newSrc, buttonId) {
+    const matrixPosition = buttonId.split('_')[1];
 
-function ReplaceCardImage () {
-    
+    let positionIndex = matrixPositions.findIndex(pos => pos.matrix_position === matrixPosition);
+
+    if (positionIndex === -1) {
+        matrixPositions.push({ matrix_position: matrixPosition, isOpen: false });
+        positionIndex = matrixPositions.length - 1;
+    }
+
+    var image = document.getElementById(`A${matrixPosition}`);
+    image.src = newSrc;
+
+    matrixPositions[positionIndex].isOpen = true;
+
+    if (matrixPositions.every(pos => pos.isOpen)) {
+        alert("All matrix positions have been filled!");
+    }
 }
 
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
