@@ -90,6 +90,7 @@ function ValidateUserInput(button) {
         lives = lives - 1;
         button.style.backgroundColor = "red";
         display_lives.innerHTML = `${lives}`;
+        button.classList.add("disabled");
     }
     if (lives === 0) {
         alert("Game Over!");
