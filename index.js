@@ -56,8 +56,11 @@ for (let i = 0; i < buttons.length; i++) {
 
 let score = 0;
 let lives = 15;
-var display_score = document.getElementById("scores").innerHTML = `${score}`;
-var display_lives = document.getElementById("lives").innerHTML = `${lives}`;
+var display_score = document.getElementById("scores");
+var display_lives = document.getElementById("lives");
+
+display_score.innerHTML = `${score}`;
+display_lives.innerHTML = `${lives}`;
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
@@ -68,24 +71,40 @@ function ValidateUserInput(button) {
     if (randomCard) {
         alert("You clicked the right card");
         score = score + 100;
-        // button.disabled = true;
-        display_score;
+        display_score.innerHTML = `${score}`;
         button.classList.add("disabled");
-        ReplaceCardImage(newSource, button.id);
+        button.style.backgroundColor = "green";
+        ReplaceCardImage(newSource, cards.indexOf(randomCard));
+
+        let cardValue = values.indexOf(randomCard.card_number) + 1;
+        let totalSum = document.getElementById("sum_of_cards").textContent;
+        totalSum = totalSum - cardValue;
+        document.getElementById("sum_of_cards").textContent = totalSum;
+        if (totalSum === 0 ) {
+            alert("Congratulations, you have won the game");
+            DisableAllCards();
+        }
 
     } else {
         alert("You clicked the wrong card");
-        //button.disabled = true;
         lives = lives - 1;
-        display_lives;
+        button.style.backgroundColor = "red";
+        display_lives.innerHTML = `${lives}`;
     }
     if (lives === 0) {
         alert("Game Over!");
+        DisableAllCards();
     }
 }
 
+function DisableAllCards() {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(button => {
+        button.disabled = true;
+    });
+}
 
-function ReplaceCardImage(newSource, buttonId) {
+function ReplaceCardImage(newSource, cardIndex) {
     const matrix = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
     let image_reveal = [];
 
@@ -93,14 +112,14 @@ function ReplaceCardImage(newSource, buttonId) {
         var image_id = "A" + matrix[position];
         image_reveal.push({ image_position: image_id, isopen: false });
     }
-    image_reveal.forEach(image => {
-        let imageId = image.image_position;
-        var imageElement = document.getElementById(imageId);
-        if (image.isopen === false) {
-            imageElement.src = newSource;
-            image.isopen = true;
-        }
-    });
+
+    let imageId = image_reveal[cardIndex].image_position;
+    var imageElement = document.getElementById(imageId);
+
+    if (image_reveal[cardIndex].isopen === false) {
+        imageElement.src = newSource;
+        image_reveal[cardIndex].isopen = true;
+    }
 }
 
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
