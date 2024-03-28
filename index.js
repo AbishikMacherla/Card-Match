@@ -1,6 +1,14 @@
 function CreateButtons(values, suites) {
     const table = document.querySelector('table');
 
+    const labelRow = document.createElement('tr');
+    for (let suit of suites) {
+        const labelData = document.createElement('td');
+        labelData.textContent = suit;
+        labelRow.appendChild(labelData);
+    }
+    table.appendChild(labelRow);
+
     for (let value of values) {
         const row = document.createElement('tr');
         for (let suit of suites) {
@@ -20,17 +28,17 @@ function CreateButtons(values, suites) {
     }
 }
 
+
 function ArrayOfNumbers(numbers, kind) {
     let cards = [];
     let card = new Set();
 
     while (card.size < 9) {
-        var random = Math.random();
-        var index = Math.floor(random * numbers.length);
-        if (!card.has(index)) {
-            card.add(index);
-            var number = numbers[index];
-            var suite = kind[Math.floor(random * kind.length)];
+        var randomIndex = Math.floor(Math.random() * numbers.length);
+        if (!card.has(randomIndex)) {
+            card.add(randomIndex);
+            var number = numbers[randomIndex];
+            var suite = kind[randomIndex % kind.length];
             cards.push({ card_suite: suite, card_number: number });
         }
     }
@@ -81,7 +89,7 @@ function ValidateUserInput(button) {
         totalSum = totalSum - cardValue;
         document.getElementById("sum_of_cards").textContent = totalSum;
         if (totalSum === 0 ) {
-            alert("Congratulations, you have won the game");
+            DisplayGameResultModal("win",score);
             DisableAllCards();
         }
 
@@ -93,7 +101,7 @@ function ValidateUserInput(button) {
         button.classList.add("disabled");
     }
     if (lives === 0) {
-        alert("Game Over!");
+        DisplayGameResultModal("lose",score);
         DisableAllCards();
     }
 }
@@ -134,3 +142,30 @@ for (let card of cards) {
 }
 
 SumOfTheCardValues(cards);
+
+function DisplayGameResultModal(result, score) {
+    let message = '';
+    if (result === 'win') {
+        message = 'Congratulations, you have won the game!';
+    } else {
+        message = 'Game Over. You have lost the game.';
+    }
+
+    document.getElementById('finalScore').textContent = score;
+    document.getElementById('modalTitle').textContent = message;
+
+    document.getElementById('modal').style.display = 'block';
+
+    document.getElementById('closeModal').addEventListener('click', () => {
+        document.getElementById('modal').style.display = 'none';
+    });
+
+    document.getElementById('exitGame').addEventListener('click', () => {
+        window.location.href = "index.html";
+    });
+
+    document.getElementById('playAgain').addEventListener('click', () => {
+        location.reload();
+    });
+}
+

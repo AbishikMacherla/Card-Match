@@ -85,8 +85,8 @@
     border-color: black;
 }
 
-.sum-counter-position, 
-.score-counter-position, 
+.sum-counter-position,
+.score-counter-position,
 .live-counter-position {
     display: flex;
     flex-direction: column;
@@ -108,4 +108,40 @@
     font-weight: bolder;
     font-size: 160%;
     padding: 3% 23%;
+}
+
+td, th {
+    text-align: center;
+    padding: 8px;
+}
+
+button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#modal {
+    width: 300px;
+    height: 200px;
+    background: #fff;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+#closeModal {
+    position: absolute;
+    top: 0;
+    left: 0;
 }
