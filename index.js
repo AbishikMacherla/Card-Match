@@ -78,10 +78,10 @@ function ValidateUserInput(button) {
     var newSource = "card-assets/" + `${button.id}` + ".svg";
 
     if (randomCard) {
-        alert("You clicked the right card");
         score = score + 100;
         display_score.innerHTML = `${score}`;
         button.classList.add("disabled");
+        button.blur();
         button.style.backgroundColor = "green";
         ReplaceCardImage(newSource, cards.indexOf(randomCard));
 
@@ -95,11 +95,11 @@ function ValidateUserInput(button) {
         }
 
     } else {
-        alert("You clicked the wrong card");
         lives = lives - 1;
-        button.style.backgroundColor = "red";
         display_lives.innerHTML = `${lives}`;
         button.classList.add("disabled");
+        button.blur();
+        button.style.backgroundColor = "red";
     }
     if (lives === 0) {
         DisplayGameResultModal("lose", score);
@@ -132,7 +132,7 @@ function ReplaceCardImage(newSource, cardIndex) {
     }
 }
 
-const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "K", "Q"];
+const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 const suites = ["Diamond", "Heart", "Spades", "Clover"];
 
 CreateButtons(values, suites);
