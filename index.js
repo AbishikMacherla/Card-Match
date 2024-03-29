@@ -15,6 +15,7 @@ function CreateButtons(values, suites) {
             const tabledata = document.createElement('td');
             const button = document.createElement('button');
             button.textContent = value;
+            button.classList.add("card-button");
             button.classList.add("btn");
             button.classList.add("btn-primary");
             button.classList.add("card-number-btn");
@@ -55,7 +56,7 @@ function SumOfTheCardValues(cards) {
     document.getElementById("sum_of_cards").innerHTML = `${sum}`;
     return sum;
 }
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.card-button');
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function () {
         ValidateUserInput(buttons[i]);
@@ -88,8 +89,8 @@ function ValidateUserInput(button) {
         let totalSum = document.getElementById("sum_of_cards").textContent;
         totalSum = totalSum - cardValue;
         document.getElementById("sum_of_cards").textContent = totalSum;
-        if (totalSum === 0 ) {
-            DisplayGameResultModal("win",score);
+        if (totalSum === 0) {
+            DisplayGameResultModal("win", score);
             DisableAllCards();
         }
 
@@ -101,13 +102,13 @@ function ValidateUserInput(button) {
         button.classList.add("disabled");
     }
     if (lives === 0) {
-        DisplayGameResultModal("lose",score);
+        DisplayGameResultModal("lose", score);
         DisableAllCards();
     }
 }
 
 function DisableAllCards() {
-    const buttons = document.querySelectorAll('button');
+    const buttons = document.querySelectorAll('.card-button');
     buttons.forEach(button => {
         button.disabled = true;
     });
@@ -154,11 +155,9 @@ function DisplayGameResultModal(result, score) {
     document.getElementById('finalScore').textContent = score;
     document.getElementById('modalTitle').textContent = message;
 
-    document.getElementById('modal').style.display = 'block';
+    var myModal = new bootstrap.Modal(document.getElementById('myModal'));
 
-    document.getElementById('closeModal').addEventListener('click', () => {
-        document.getElementById('modal').style.display = 'none';
-    });
+    myModal.show();
 
     document.getElementById('exitGame').addEventListener('click', () => {
         window.location.href = "index.html";
