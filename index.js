@@ -85,6 +85,15 @@ function ValidateUserInput(button) {
         button.style.backgroundColor = "green";
         ReplaceCardImage(newSource, cards.indexOf(randomCard));
 
+        const sameNumberCards = document.querySelectorAll(`button[id$='_${clicked_cardNumber}']`);
+        sameNumberCards.forEach(cardButton => {
+            if (!cards.find(card => card.card_suite === cardButton.id.split('_')[0] && card.card_number === cardButton.id.split('_')[1])) {
+                cardButton.classList.add("disabled");
+                cardButton.blur();
+                cardButton.style.backgroundColor = "red";
+            }
+        });
+
         let cardValue = values.indexOf(randomCard.card_number) + 1;
         let totalSum = document.getElementById("sum_of_cards").textContent;
         totalSum = totalSum - cardValue;
@@ -95,15 +104,22 @@ function ValidateUserInput(button) {
         }
 
     } else {
-        lives = lives - 1;
-        display_lives.innerHTML = `${lives}`;
-        button.classList.add("disabled");
-        button.blur();
-        button.style.backgroundColor = "red";
-    }
-    if (lives === 0) {
-        DisplayGameResultModal("lose", score);
-        DisableAllCards();
+        const sameNumberCard = cards.find(card => card.card_number === clicked_cardNumber);
+        if (sameNumberCard) {
+            button.classList.add("disabled");
+            button.blur();
+            button.style.backgroundColor = "yellow";
+        } else {
+            lives = lives - 1;
+            display_lives.innerHTML = `${lives}`;
+            button.classList.add("disabled");
+            button.blur();
+            button.style.backgroundColor = "red";
+        }
+        if (lives === 0) {
+            DisplayGameResultModal("lose", score);
+            DisableAllCards();
+        }
     }
 }
 
