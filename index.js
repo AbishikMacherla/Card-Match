@@ -29,22 +29,31 @@ function CreateButtons(values, suites) {
     }
 }
 
-
 function ArrayOfNumbers(numbers, kind) {
-    let cards = [];
-    let card = new Set();
+    let uniqueCards = [];
+    const totalCards = numbers.length * kind.length;
 
-    while (card.size < 9) {
-        var randomIndex = Math.floor(Math.random() * numbers.length);
-        if (!card.has(randomIndex)) {
-            card.add(randomIndex);
-            var number = numbers[randomIndex];
-            var suite = kind[randomIndex % kind.length];
-            cards.push({ card_suite: suite, card_number: number });
+    for (let suit of kind) {
+        for (let number of numbers) {
+            uniqueCards.push({ card_suite: suit, card_number: number, flag: false });
         }
     }
 
-    return cards;
+    for (let i = totalCards - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [uniqueCards[i], uniqueCards[j]] = [uniqueCards[j], uniqueCards[i]];
+    }
+
+    const seenNumbers = new Set();
+    const filteredCards = [];
+    for (let card of uniqueCards) {
+        if (!seenNumbers.has(card.card_number)) {
+            seenNumbers.add(card.card_number);
+            filteredCards.push(card);
+        }
+    }
+
+    return filteredCards.slice(0, 9);
 }
 
 function SumOfTheCardValues(cards) {
@@ -78,21 +87,13 @@ function ValidateUserInput(button) {
     var newSource = "card-assets/" + `${button.id}` + ".svg";
 
     if (randomCard) {
+        randomCard.flag = true;
         score = score + 100;
         display_score.innerHTML = `${score}`;
         button.classList.add("disabled");
         button.blur();
         button.style.backgroundColor = "green";
         ReplaceCardImage(newSource, cards.indexOf(randomCard));
-
-        const sameNumberCards = document.querySelectorAll(`button[id$='_${clicked_cardNumber}']`);
-        sameNumberCards.forEach(cardButton => {
-            if (!cards.find(card => card.card_suite === cardButton.id.split('_')[0] && card.card_number === cardButton.id.split('_')[1])) {
-                cardButton.classList.add("disabled");
-                cardButton.blur();
-                cardButton.style.backgroundColor = "red";
-            }
-        });
 
         let cardValue = values.indexOf(randomCard.card_number) + 1;
         let totalSum = document.getElementById("sum_of_cards").textContent;
@@ -106,9 +107,16 @@ function ValidateUserInput(button) {
     } else {
         const sameNumberCard = cards.find(card => card.card_number === clicked_cardNumber);
         if (sameNumberCard) {
-            button.classList.add("disabled");
-            button.blur();
-            button.style.backgroundColor = "yellow";
+            if (sameNumberCard.flag) {
+                button.classList.add("disabled");
+                button.blur();
+                button.style.backgroundColor = "red";
+            } else {
+                button.classList.add("disabled");
+                button.blur();
+                button.style.backgroundColor = "yellow";
+            }
+
         } else {
             lives = lives - 1;
             display_lives.innerHTML = `${lives}`;
@@ -168,7 +176,12 @@ function DisplayGameResultModal(result, score) {
         message = 'Game Over. You have lost the game.';
     }
 
-    document.getElementById('finalScore').textContent = score;
+    let lives_score = lives * 100;
+    let finalScore = score + lives_score
+
+    document.getElementById('gameScore').textContent = score;
+    document.getElementById('liveScore').textContent = lives_score;
+    document.getElementById('finalScore').textContent = finalScore;
     document.getElementById('modalTitle').textContent = message;
 
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
