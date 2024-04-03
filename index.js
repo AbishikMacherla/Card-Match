@@ -1,3 +1,5 @@
+const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+
 function CreateButtons(values, suites) {
     const table = document.querySelector('table');
 
@@ -65,7 +67,8 @@ function SumOfTheCardValues(cards) {
     document.getElementById("sum_of_cards").innerHTML = `${sum}`;
     return sum;
 }
-const buttons = document.querySelectorAll('.card-button');
+
+const buttons = document.querySelectorAll('.card-number-btn');
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', function () {
         ValidateUserInput(buttons[i]);
@@ -73,12 +76,24 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 let score = 0;
-let lives = 15;
+let lives = 0;
 var display_score = document.getElementById("scores");
 var display_lives = document.getElementById("lives");
 
 display_score.innerHTML = `${score}`;
 display_lives.innerHTML = `${lives}`;
+
+document.getElementById('gameMode').addEventListener('change', function() {
+    const selectedMode = document.getElementById('gameMode').value;
+    if (selectedMode === 'easy') {
+        lives = 18;
+    } else if (selectedMode === 'medium') {
+        lives = 15;
+    } else if (selectedMode === 'hard') {
+        lives = 12;
+    }
+    display_lives.innerHTML = `${lives}`;
+});
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
@@ -108,10 +123,14 @@ function ValidateUserInput(button) {
         const sameNumberCard = cards.find(card => card.card_number === clicked_cardNumber);
         if (sameNumberCard) {
             if (sameNumberCard.flag) {
+                lives = lives - 1;
+                display_lives.innerHTML = `${lives}`;
                 button.classList.add("disabled");
                 button.blur();
                 button.style.backgroundColor = "red";
             } else {
+                lives = lives - 1;
+                display_lives.innerHTML = `${lives}`;
                 button.classList.add("disabled");
                 button.blur();
                 button.style.backgroundColor = "yellow";
@@ -156,7 +175,6 @@ function ReplaceCardImage(newSource, cardIndex) {
     }
 }
 
-const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
 const suites = ["Diamond", "Heart", "Spades", "Clover"];
 
 CreateButtons(values, suites);
@@ -196,4 +214,3 @@ function DisplayGameResultModal(result, score) {
         location.reload();
     });
 }
-
