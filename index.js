@@ -83,16 +83,29 @@ var display_lives = document.getElementById("lives");
 display_score.innerHTML = `${score}`;
 display_lives.innerHTML = `${lives}`;
 
-document.getElementById('gameMode').addEventListener('change', function() {
-    const selectedMode = document.getElementById('gameMode').value;
-    if (selectedMode === 'easy') {
-        lives = 18;
-    } else if (selectedMode === 'medium') {
-        lives = 15;
-    } else if (selectedMode === 'hard') {
-        lives = 12;
-    }
-    display_lives.innerHTML = `${lives}`;
+function showModeSelectionModal() {
+    var modeSelectionModal = new bootstrap.Modal(document.getElementById('modeSelectionModal'));
+    modeSelectionModal.show();
+
+    document.getElementById('startGame').addEventListener('click', function () {
+        const selectedMode = document.querySelector('input[name="gameMode"]:checked').value;
+        if (selectedMode === 'easy') {
+            lives = 18;
+            display_lives.innerHTML = `${lives}`;
+        } else if (selectedMode === 'medium') {
+            lives = 15;
+            display_lives.innerHTML = `${lives}`;
+        } else if (selectedMode === 'hard') {
+            lives = 12;
+            display_lives.innerHTML = `${lives}`;
+        }
+        display_lives.innerHTML = `${lives}`;
+        modeSelectionModal.hide();
+    });
+}
+
+document.querySelector('button[href="Card_match.html"]').addEventListener('click', function() {
+    showModeSelectionModal();
 });
 
 function ValidateUserInput(button) {
