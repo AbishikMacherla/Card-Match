@@ -11,70 +11,71 @@
 
 <body>
     <p class="center-title">Card match</p>
-    <div class="overall-page-layout">
-        <div class="buttons-postion">
-            <table id="card-table"></table>
-        </div>
-        <div class="buttons-postion">
-            <table id="card-table"></table>
-        </div>
-        <div class="grid-container">
-            <div class="grid-item"> <img class="image-style" id="A11" src="css/back_of_card.png" alt="back_of_card">
+        <div class="overall-page-layout">
+            <div class="buttons-postion">
+                <table id="card-table"></table>
             </div>
-            <div class="grid-item"> <img class="image-style" id="A12" src="css/back_of_card.png" alt="back_of_card">
+            <div class="buttons-postion">
+                <table id="card-table"></table>
             </div>
-            <div class="grid-item"> <img class="image-style" id="A13" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A21" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A22" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A23" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A31" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A32" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-            <div class="grid-item"> <img class="image-style" id="A33" src="css/back_of_card.png" alt="back_of_card">
-            </div>
-        </div>
-        <div class="counter-position">
-            <div class="sum-counter-position">
-                <label class="label-sum">Sum</label>
-                <div class="counter-box">
-                    <div class="center-sum" id="sum_of_cards"></div>
+            <div class="grid-container">
+                <div class="grid-item"> <img class="image-style" id="A11" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A12" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A13" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A21" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A22" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A23" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A31" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A32" src="css/back_of_card.png" alt="back_of_card">
+                </div>
+                <div class="grid-item"> <img class="image-style" id="A33" src="css/back_of_card.png" alt="back_of_card">
                 </div>
             </div>
-            <div class="score-counter-position">
-                <label class="label-score">Score</label>
-                <div class="counter-box">
-                    <div class="center-score" id="scores"></div>
-                </div>
-            </div>
-            <div class="live-counter-position">
-                <label class="label-score">Lives</label>
-                <div class="counter-box">
-                    <div class="center-lives" id="lives"></div>
-                </div>
-            </div>
-        </div>
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" id ="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+            <div class="counter-position">
+                <div class="sum-counter-position">
+                    <label class="label-sum">Sum</label>
+                    <div class="counter-box">
+                        <div class="center-sum" id="sum_of_cards"></div>
                     </div>
-                    <div class="modal-body">
-                        <p id="modalTitle"></p>
-                        <p>Your Game score: <span id="gameScore"></span></p>
-                        <p>Your Lives score: <span id="liveScore"></span></p>
-                        <p>Total Score: <span id="finalScore"></span></p>
+                </div>
+                <div class="score-counter-position">
+                    <label class="label-score">Score</label>
+                    <div class="counter-box">
+                        <div class="center-score" id="scores"></div>
                     </div>
-                    <div class="modal-footer">
-                        <button id="exitGame" class="btn btn-default" data-dismiss="modal">Exit Game</button>
-                        <button id="playAgain" class="btn btn-default">Play Again</button>
+                </div>
+                <div class="live-counter-position">
+                    <label class="label-score">Lives</label>
+                    <div class="counter-box">
+                        <div class="center-lives" id="lives"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="myModal" class="modal fade" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" id="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modalTitle"></p>
+                            <p>Your Game score: <span id="gameScore"></span></p>
+                            <p>Your Lives score: <span id="liveScore"></span></p>
+                            <p>Total Score: <span id="finalScore"></span></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="exitGame" class="btn btn-default" data-dismiss="modal">Exit Game</button>
+                            <button id="playAgain" class="btn btn-default">Play Again</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,4 +89,5 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
 </body>
+
 </html>
