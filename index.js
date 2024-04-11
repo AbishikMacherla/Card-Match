@@ -74,35 +74,12 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 let score = 0;
-let lives = 15;
+let lives = localStorage.getItem('selectedValue');
 var display_score = document.getElementById("scores");
 var display_lives = document.getElementById("lives");
 
 display_score.innerHTML = `${score}`;
 display_lives.innerHTML = `${lives}`;
-
-// var myModal = new bootstrap.Modal(document.getElementById('myModal'));
-
-// myModal.show();
-
-// document.getElementById('startGame').addEventListener('change', function () {
-//     const selectedMode = document.getElementById('gameMode').value;
-//     if (selectedMode === 'easy') {
-//         lives = lives + 18;
-//     } else if (selectedMode === 'medium') {
-//         lives = lives + 15;
-//     } else if (selectedMode === 'hard') {
-//         lives = lives + 12;
-//     }
-//     let score = 0;
-//     var display_score = document.getElementById("scores");
-//     var display_lives = document.getElementById("lives");
-
-//     display_score.innerHTML = `${score}`;
-//     display_lives.innerHTML = `${lives}`;
-// });
-
-//display_lives.innerHTML = `${lives}`;
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
@@ -177,7 +154,11 @@ function ReplaceCardImage(newSource, cardIndex) {
     var imageElement = document.getElementById(imageId);
 
     if (image_reveal[cardIndex].isopen === false) {
-        imageElement.src = newSource;
+        imageElement.classList.add('flip');
+        setTimeout(function () {
+            imageElement.src = newSource;
+            imageElement.classList.remove('flip');
+        }, 200);
         image_reveal[cardIndex].isopen = true;
     }
 }

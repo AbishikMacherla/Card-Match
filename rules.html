@@ -7,6 +7,12 @@
     <title>Rules</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -28,28 +34,28 @@
             </ul>
             </p>
         </div>
-        
-        <!-- <button type="button" class="btn btn-primary" id="openModal">Continue</button>
+
+        <button type="button" class="btn btn-primary" id="openModal">Continue</button>
     </div>
     <div id="modeSelectionModal" class="modal" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" id="close" aria-label="Close">
-                        <span aria-hidden="true">×</span>
+                    <button type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <h5>Select Game Mode:</h5>
                     <div>
                         <label>
-                            <input type="radio" name="gameMode" value="easy" checked> Easy
+                            <input type="radio" id="easy" value="18"> Easy
                         </label>
                         <label>
-                            <input type="radio" name="gameMode" value="medium"> Medium
+                            <input type="radio" id="medium" value="15"> Medium
                         </label>
                         <label>
-                            <input type="radio" name="gameMode" value="hard"> Hard
+                            <input type="radio" id="hard" value="12"> Hard
                         </label>
                     </div>
                 </div>
@@ -59,6 +65,30 @@
             </div>
         </div>
     </div>
+    <script>
+        let selectedValue;
+        var myModal = new bootstrap.Modal(document.getElementById('modeSelectionModal'));
+
+        document.getElementById('openModal').addEventListener('click', () => {
+            myModal.show();
+        });
+        document.getElementById('startGame').addEventListener('click', () => {
+            if (document.getElementById('easy').checked) {
+                selectedValue = document.getElementById('easy').value;
+            } else if (document.getElementById('medium').checked) {
+                selectedValue = document.getElementById('medium').value;
+            } else if (document.getElementById('hard').checked) {
+                selectedValue = document.getElementById('hard').value;
+            }
+
+            if (selectedValue) {
+                localStorage.setItem('selectedValue', selectedValue);
+                window.location.href = "Card_match.html";
+            } else {
+                alert("Please select a game mode before proceeding.");
+            }
+        });
+    </script>
 </body>
 
 </html>
