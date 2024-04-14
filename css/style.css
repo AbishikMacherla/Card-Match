@@ -1,7 +1,22 @@
-body {
+/* body {
     background-image: url("Startpage_.jpg");
     background-repeat: no-repeat;
-    opacity: 1;
+    opacity: 5;
+} */
+.background {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .centering {
@@ -100,6 +115,7 @@ body {
     border: thick;
     border-style: double;
     border-color: black;
+    background-color: aliceblue;
 }
 
 .sum-counter-position,
@@ -116,6 +132,7 @@ body {
 .label-live {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
+    background-color: aliceblue;
 }
 
 .center-sum,
@@ -142,28 +159,6 @@ button {
     margin: 4px 2px;
     cursor: pointer;
 }
-
-/* #exitGame, #playAgain {
-    width: 20px;
-    height: 20px;
-} */
-
-/* 
-button {
-    transition: background 0.5s, color 0.5s;
-}
-
-button:hover {
-    background: #ff7f50; 
-    color: #fff;
-    animation: cauldron 1s infinite;
-}
-
-@keyframes cauldron {
-    0% {background: #ff7f50;}
-    50% {background: #ff4500;}
-    100% {background: #ff7f50;}
-}*/
 
 .reset-button {
     position: absolute;
