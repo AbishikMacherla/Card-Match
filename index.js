@@ -195,6 +195,10 @@ function DisplayGameResultModal(result, score) {
 
     myModal.show();
 
+    document.getElementById('revealCards').addEventListener('click', () => {
+        RevealAllCards();
+    });
+
     document.getElementById('exitGame').addEventListener('click', () => {
         window.location.href = "index.html";
     });
@@ -202,4 +206,15 @@ function DisplayGameResultModal(result, score) {
     document.getElementById('playAgain').addEventListener('click', () => {
         location.reload();
     });
+}
+
+function RevealAllCards() {
+    const matrix = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
+    for (let position = 0; position < matrix.length; position++) {
+        var image_id = "A" + matrix[position];
+        var imageElement = document.getElementById(image_id);
+        let card = cards[position];
+        let newSource = "card-assets/" + `${card.card_suite}_${card.card_number}` + ".svg";
+        imageElement.src = newSource;
+    }
 }

@@ -1,8 +1,7 @@
-/* body {
-    background-image: url("Startpage_.jpg");
-    background-repeat: no-repeat;
-    opacity: 5;
-} */
+.common-background {
+    background-image: url(Startpage_.jpg);
+}
+
 .background {
     position: relative;
     overflow: hidden;
@@ -32,22 +31,17 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.card {
+.card, .match {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
     font-size: 400%;
-}
-
-.match {
-    font-family: cursive;
-    font-weight: 900;
-    font-size: 300%;
 }
 
 .buttons {
     display: inline-flexbox;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding: 10px 25px;
+    opacity: 5;
 }
 
 .overall-page-layout {
