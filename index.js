@@ -5,6 +5,7 @@ function CreateButtons(values, suites) {
     for (let suit of suites) {
         const labelData = document.createElement('td');
         labelData.textContent = suit;
+        labelData.classList = `label-${suit.toLowerCase()}`;
         labelRow.appendChild(labelData);
     }
     table.appendChild(labelRow);
@@ -74,6 +75,7 @@ function ArrayOfNumbers(numbers, kind) {
     return filteredCards.slice(0, 9);
 }
 
+let total_sum_of_cards = 0;
 function SumOfTheCardValues(cards) {
     let sum = 0;
     for (let card of cards) {
@@ -81,6 +83,8 @@ function SumOfTheCardValues(cards) {
         sum = sum + card_value;
     }
     document.getElementById("sum_of_cards").innerHTML = `${sum}`;
+    total_sum_of_cards = sum;
+    document.getElementById("total_sum_of_cards").innerHTML = `${total_sum_of_cards}`;
     return sum;
 }
 
@@ -92,6 +96,7 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 let score = 0;
+let combo = 0;
 let lives = localStorage.getItem('selectedValue');
 var display_score = document.getElementById("scores");
 var display_lives = document.getElementById("lives");
@@ -107,7 +112,8 @@ function ValidateUserInput(button) {
 
     if (randomCard) {
         randomCard.flag = true;
-        score = score + 100;
+        combo = combo + 1;
+        score = score + 100 * combo;
         display_score.innerHTML = `${score}`;
         button.classList.add("disabled");
         button.blur();
@@ -124,6 +130,7 @@ function ValidateUserInput(button) {
         }
 
     } else {
+        combo = 0;
         const sameNumberCard = cards.find(card => card.card_number === clicked_cardNumber);
         if (sameNumberCard) {
             if (sameNumberCard.flag) {

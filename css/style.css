@@ -31,10 +31,12 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.game-title {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 900;
-    font-size: 400%;
+.label-diamond,
+.label-heart,
+.label-spades,
+.label-clover {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
 }
 
 .buttons {
@@ -114,7 +116,8 @@
 
 .sum-counter-position,
 .score-counter-position,
-.live-counter-position {
+.live-counter-position,
+.total-sum-counter-position {
     display: flex;
     flex-direction: column;
     top: 25%;
@@ -123,7 +126,8 @@
 
 .label-sum,
 .label-score,
-.label-live {
+.label-live,
+.label-total-sum {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     background-color: aliceblue;
@@ -131,7 +135,8 @@
 
 .center-sum,
 .center-score,
-.center-lives {
+.center-lives,
+.center-total-sum {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     font-size: 160%;
