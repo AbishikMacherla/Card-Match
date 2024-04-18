@@ -31,7 +31,7 @@
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.card, .match {
+.game-title {
     font-family: 'Courier New', Courier, monospace;
     font-weight: 900;
     font-size: 400%;
@@ -159,7 +159,7 @@ button {
     top: 10px;
     right: 10px;
 }
-.reset-button button {
+.reset-button button{
     background: none;
     border: none;
 }

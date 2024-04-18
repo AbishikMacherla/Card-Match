@@ -20,16 +20,16 @@
         <button type="button"><a href="index.html">⇐</a></button>
         <div class="border">
             <h2>Rules</h2>
-            <p>The main objective of the game is to guess the cards from the deck.
+            <p>
             <ul>
-                <li> How it works:</li>
+                The main objective of the game is to guess the cards in the deck, which does not mean you can win it
+                every time. Unless you are a stategic player or a lucky person.
+                <li>How to play:</li>
                 <ul>
-                    <li>The game will generate 9 random cards from the deck and placed face-down in a grid</li>
-                    <li>The player wil have 15 lives, at the start of the game. Also, provide some hints</li>
-                    <li>The player only needs to interact with the buttons, for guessing the cards</li>
+                    <li>The game will have 52 buttons on the left side. Each button represent 52 cards</li>
+                    <li></li>
+                    <li></li>
                 </ul>
-                <li>Rule two - blah blah blah blah blah blah</li>
-                <li>Rule three - blah blah</li>
                 <li> </li>
             </ul>
             </p>
@@ -41,21 +41,22 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                    <button type="button" id="close" data-dismiss="modal" aria-label="Close">
+                        <img src="css/Close_icon.png" alt="Close Icon" width="15px" height="15px">
+                        <span aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <h5>Select Game Mode:</h5>
                     <div>
                         <label>
-                            <input type="radio" id="easy" value="18"> Easy
-                        </label>
+                            <input type="radio" id="easy" name="gameMode" value="18"> Easy
+                        </label><br>
                         <label>
-                            <input type="radio" id="medium" value="15"> Medium
-                        </label>
+                            <input type="radio" id="medium" name="gameMode" value="15"> Medium
+                        </label><br>
                         <label>
-                            <input type="radio" id="hard" value="12"> Hard
+                            <input type="radio" id="hard" name="gameMode" value="12"> Hard
                         </label>
                     </div>
                 </div>

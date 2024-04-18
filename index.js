@@ -29,6 +29,24 @@ function CreateButtons(values, suites) {
     }
 }
 
+function CreateCards(cards) {
+    const gridContainer = document.querySelector('.grid-container');
+
+    for (let card of cards) {
+        const gridItem = document.createElement('div');
+        gridItem.classList.add('grid-item');
+
+        const img = document.createElement('img');
+        img.classList.add('image-style');
+        img.id = `A${card.card_suite}${card.card_number}`;
+        img.src = "css/back_of_card.png";
+        img.alt = "back_of_card";
+
+        gridItem.appendChild(img);
+        gridContainer.appendChild(gridItem);
+    }
+}
+
 function ArrayOfNumbers(numbers, kind) {
     let uniqueCards = [];
     const totalCards = numbers.length * kind.length;
@@ -142,13 +160,9 @@ function DisableAllCards() {
 }
 
 function ReplaceCardImage(newSource, cardIndex) {
-    const matrix = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
-    let image_reveal = [];
-
-    for (let position = 0; position < matrix.length; position++) {
-        var image_id = "A" + matrix[position];
-        image_reveal.push({ image_position: image_id, isopen: false });
-    }
+    let image_reveal = cards.map((card, index) => {
+        return { image_position: `A${card.card_suite}${card.card_number}`, isopen: false };
+    });
 
     let imageId = image_reveal[cardIndex].image_position;
     var imageElement = document.getElementById(imageId);
@@ -158,7 +172,7 @@ function ReplaceCardImage(newSource, cardIndex) {
         setTimeout(function () {
             imageElement.src = newSource;
             imageElement.classList.remove('flip');
-        }, 200);
+        }, 100);
         image_reveal[cardIndex].isopen = true;
     }
 }
@@ -173,6 +187,7 @@ for (let card of cards) {
     console.log(card);
 }
 
+CreateCards(cards);
 SumOfTheCardValues(cards);
 
 function DisplayGameResultModal(result, score) {
@@ -209,11 +224,10 @@ function DisplayGameResultModal(result, score) {
 }
 
 function RevealAllCards() {
-    const matrix = ["11", "12", "13", "21", "22", "23", "31", "32", "33"];
-    for (let position = 0; position < matrix.length; position++) {
-        var image_id = "A" + matrix[position];
+    for (let i = 0; i < cards.length; i++) {
+        var card = cards[i];
+        var image_id = `A${card.card_suite}${card.card_number}`;
         var imageElement = document.getElementById(image_id);
-        let card = cards[position];
         let newSource = "card-assets/" + `${card.card_suite}_${card.card_number}` + ".svg";
         imageElement.src = newSource;
     }
