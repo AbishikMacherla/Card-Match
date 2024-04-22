@@ -7,6 +7,7 @@
     <title>Rules</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
@@ -16,52 +17,106 @@
 </head>
 
 <body class="common-background">
-    <div class="centering">
-        <button type="button"><a href="index.html">⇐</a></button>
-        <div class="border">
-            <h2>Rules</h2>
+    <div class="rules-page-layout">
+        <div class="left-border">
+            <h5>Objective of Card Match</h5>
             <p>
+                The game "Card Match" is a card guessing game in which the player is required to guess the cards in the
+                deck. Card fans of all kinds will enjoy playing this game, but to win, a player must either be strategic
+                or lucky. </p>
+            <h5>Elements of the Game:</h5>
             <ul>
-                The main objective of the game is to guess the cards in the deck, which does not mean you can win it
-                every time. Unless you are a stategic player or a lucky person.
-                <li>How to play:</li>
-                <ul>
-                    <li>The game will have 52 buttons on the left side. Each button represent 52 cards</li>
-                    <li></li>
-                    <li></li>
-                </ul>
-                <li> </li>
+                <li>The game will display 52 buttons on the left side, each representing a playing card.</li>
+                <li>In the center of the page, there will be a grid that is initially hidden and will be revealed once
+                    the player clicks the correct card.</li>
+                <li>The player will be provided with counters for the total sum, score, and lives on the right side of
+                    the page.</li>
+            </ul>
+            <h5>Additional Information:</h5>
+            <ul>
+                <li>The player needs to interact only with the deck of buttons to play the game.</li>
+                <li>Only a mouse is required to play this game.</li>
+                <li>This game is linear, meaning it does not allow the user to go back to the previous page.</li>
+            </ul>
+            <h5>Important information:</h5>
+            Once the player refresh or direct inbetween the pages to progress would not be saved. So avoid moving back
+            and forth or refreshing the page during the game
+        </div>
+        <div class="right-border">
+            <h5>Game Rules:</h5>
+            <ul>
+                <li>
+                    <h5>Modes and Lives</h5>
+                    <p>The game has three difficulty levels, differentiated by the count of lives. The number of lives
+                        is determined based on probability.</p>
+                    <ul>
+                        <li>Easy mode has 18 lives.</li>
+                        <li>Medium mode has 15 lives.</li>
+                        <li>Hard mode has 12 lives.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Guessing and Scoring</h5>
+                    <ul>
+                        <li>If the player guesses the right card, the card will be revealed and the button color will
+                            change to green.</li>
+                        <li>If the player guesses the wrong card, the card will not be revealed and the button color
+                            will change to red.</li>
+                        <li>If the player guesses the right card value but the card suit is wrong, there will be no
+                            changes in the card, but the button color will change to yellow.</li>
+                        <li>For every correct guess, the player will get 100 points.</li>
+                        <li>For consecutive correct guesses, the player will get double the score (2 * 100).</li>
+                        <li>For every wrong guess, including misguesses (indicated by a yellow button), one life will be
+                            deducted from the lives count.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Hints</h5>
+                    <ul>
+                        <li>There are two counters displaying numbers which are the sums of the values of the cards.
+                        </li>
+                        <li>Total Sum - The total sum value will change from game to game based on the values of the
+                            cards.</li>
+                        <li>Remaining Sum - The remaining sum will change after every correct guess. The values will be
+                            reduced based on the card values which have been clicked by the user.</li>
+                    </ul>
+                </li>
+                <li>
+                    <h5>Card Values</h5>
+                    <ul>
+                        <li>A = 1</li>
+                        <li>The values from 2 to 10 have the same value as the card number</li>
+                        <li>J = 11</li>
+                        <li>Q = 12</li>
+                        <li>K = 13</li>
+                    </ul>
+                </li>
             </ul>
             </p>
         </div>
-
-        <button type="button" class="btn btn-primary" id="openModal">Continue</button>
     </div>
-    <div id="modeSelectionModal" class="modal" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" id="close" data-dismiss="modal" aria-label="Close">
-                        <img src="css/Close_icon.png" alt="Close Icon" width="15px" height="15px">
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <h5>Select Game Mode:</h5>
-                    <div>
-                        <label>
-                            <input type="radio" id="easy" name="gameMode" value="18"> Easy
-                        </label><br>
-                        <label>
-                            <input type="radio" id="medium" name="gameMode" value="15"> Medium
-                        </label><br>
-                        <label>
-                            <input type="radio" id="hard" name="gameMode" value="12"> Hard
-                        </label>
+    <div class="center-continue">
+        <button type="button" class="btn btn-default" id="openModal">Continue</button>
+        <div id="modeSelectionModal" class="modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <h5>Select Game Mode:</h5>
+                        <div>
+                            <label>
+                                <input type="radio" id="easy" name="gameMode" value="18"> Easy
+                            </label><br>
+                            <label>
+                                <input type="radio" id="medium" name="gameMode" value="15"> Medium
+                            </label><br>
+                            <label>
+                                <input type="radio" id="hard" name="gameMode" value="12"> Hard
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="startGame" class="btn btn-primary">Play Card Match</button>
+                    <div class="modal-footer">
+                        <button id="startGame" class="btn btn-primary">Play Card Match</button>
+                    </div>
                 </div>
             </div>
         </div>

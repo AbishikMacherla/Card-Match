@@ -7,10 +7,90 @@
     <title>Card match</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap" rel="stylesheet">
 </head>
 
 <body class="common-background">
-    <p class="center-title">Card match</p>
+        <div class="center-card-match" style="display: flex;">
+            <div style="display: flex; width: 80%;"><p class="center-card-title">Card</p>
+                <p class="center-match-title">Match</p>
+            </div>
+            <div style="display: flex;">
+                <div class="info-button">
+                    <button type="button" data-toggle="modal" data-target="#infoModal"><img src="css/Info_icon.png" alt="Info"></button>
+                </div>
+                <div id="infoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="infoModal" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Game Rules</h5>
+                                <button type="button" class="close" data-dismiss="modal" alt="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body" id="infoContent">
+                                <div class="right-border">
+                                    <h5>Game Rules:</h5>
+                                    <ul>
+                                        <li>
+                                            <h5>Modes and Lives</h5>
+                                            <p>The game has three difficulty levels, differentiated by the count of lives. The number of lives is determined based on probability.</p>
+                                            <ul>
+                                                <li>Easy mode has 18 lives.</li>
+                                                <li>Medium mode has 15 lives.</li>
+                                                <li>Hard mode has 12 lives.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h5>Guessing and Scoring</h5>
+                                            <ul>
+                                                <li>If the player guesses the right card, the card will be revealed and the button color will change to green.</li>
+                                                <li>If the player guesses the wrong card, the card will not be revealed and the button color will change to red.</li>
+                                                <li>If the player guesses the right card value but the card suit is wrong, there will be no changes in the card, but the button color will change to yellow.</li>
+                                                <li>For every correct guess, the player will get 100 points.</li>
+                                                <li>For consecutive correct guesses, the player will get double the score (2 * 100).</li>
+                                                <li>For every wrong guess, including misguesses (indicated by a yellow button), one life will be deducted from the lives count.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h5>Hints</h5>
+                                            <ul>
+                                                <li>There are two counters displaying numbers which are the sums of the values of the cards.</li>
+                                                <li>Total Sum - The total sum value will change from game to game based on the values of the cards.</li>
+                                                <li>Remaining Sum - The remaining sum will change after every correct guess. The values will be reduced based on the card values which have been clicked by the user.</li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <h5>Card Values</h5>
+                                            <ul>
+                                                <li>A = 1</li>
+                                                <li>The values from 2 to 10 have the same value as the card number</li>
+                                                <li>J = 11</li>
+                                                <li>Q = 12</li>
+                                                <li>K = 13</li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="reset-button">
+                    <button onclick="location.reload();"><img src="css/Refresh_icon.png" alt="Reset"></button>
+                </div>
+                <div class="exit-button">
+                    <button onclick="window.location.href = 'index.html';"><img src="css/Exit_icon.png" alt="Exit"></button>
+                </div>
+            </div>
+        
+        </div>
     <div class="overall-page-layout">
         <div class="buttons-postion">
             <table id="card-table"></table>
@@ -24,7 +104,7 @@
                 </div>
             </div>
             <div class="sum-counter-position">
-                <label class="label-sum">Sum</label>
+                <label class="label-sum">Remaining Sum</label>
                 <div class="counter-box">
                     <div class="center-sum" id="sum_of_cards"></div>
                 </div>
@@ -42,17 +122,10 @@
                 </div>
             </div>
         </div>
-        <div class="reset-button">
-            <button onclick="location.reload();"><img src="css/Refresh_icon.png" alt="Reset"></button>
-        </div>
         <div id="myModal" class="modal fade" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" id="close" data-dismiss="modal" aria-label="Close">
-                            <img src="css/Close_icon.png" alt="Close Icon" width="15px" height="15px">
-                            <span aria-hidden="true"></span>
-                        </button>
                     </div>
                     <div class="modal-body">
                         <p id="modalTitle"></p>

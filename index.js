@@ -18,10 +18,16 @@ function CreateButtons(values, suites) {
             button.textContent = value;
             button.classList.add("card-button");
             button.classList.add("btn");
-            button.classList.add("btn-primary");
+            button.classList.add("btn-default");
             button.classList.add("card-number-btn");
             button.id = `${suit}_${value}`;
             button.addEventListener('click', () => ValidateUserInput(button));
+            button.style.padding = '2%';
+            if (suit === 'Diamond' || suit === 'Heart') {
+                button.style.border = '2px solid red';
+            } else if (suit === 'Spades' || suit === 'Clover') {
+                button.style.border = '2px solid black';
+            }
             tabledata.appendChild(button);
             tabledata.classList.add("card-number-td");
             row.appendChild(tabledata);
@@ -185,7 +191,7 @@ function ReplaceCardImage(newSource, cardIndex) {
 }
 
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const suites = ["Diamond", "Heart", "Spades", "Clover"];
+const suites = ["Diamond", "Spades", "Heart", "Clover"];
 
 CreateButtons(values, suites);
 
@@ -211,6 +217,7 @@ function DisplayGameResultModal(result, score) {
     document.getElementById('gameScore').textContent = score;
     document.getElementById('liveScore').textContent = lives_score;
     document.getElementById('finalScore').textContent = finalScore;
+    document.getElementById('scores').textContent = finalScore;
     document.getElementById('modalTitle').textContent = message;
 
     var myModal = new bootstrap.Modal(document.getElementById('myModal'));
@@ -219,6 +226,7 @@ function DisplayGameResultModal(result, score) {
 
     document.getElementById('revealCards').addEventListener('click', () => {
         RevealAllCards();
+        myModal.hide();
     });
 
     document.getElementById('exitGame').addEventListener('click', () => {
