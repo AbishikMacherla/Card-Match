@@ -49,6 +49,13 @@
     transition: background-color 0.3s ease;
 }
 
+.easy-mode,
+.medium-mode,
+.hard-mode {
+    font-family: "Rubik Mono One", monospace;
+    font-size: x-large;
+}
+
 #startGame {
     border: solid;
     font-family: "Rubik Mono One", monospace;
@@ -189,6 +196,7 @@
 
 .buttons-postion {
     display: flex;
+    background-color: #f1eeeea3;
 }
 
 .grid-container {
