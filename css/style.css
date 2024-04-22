@@ -20,19 +20,16 @@
     object-fit: cover;
 }
 
-.center-continue {
-    display: flex;
-    justify-content: center;
-    width: 200px;
+#openModal {
     border: solid;
     background-color: white;
-}
-
-#openModal {
     position: absolute;
-    top: 5%;
-    font-family: "Jersey 10", sans-serif;
-    font-size: 25px;
+    top: 85%;
+    left:50%;
+    font-family: "Rubik Mono One", monospace;
+    font-size: x-large;
+    font-weight: 300;
+    transition: background-color 0.3s ease;
 }
 
 .centering {
@@ -43,14 +40,25 @@
 }
 
 .start-button {
+    border:solid;
     font-size: 30px;
     width: -webkit-fill-available;
-    font-family: "Jersey 10", sans-serif;
+    font-family: "Rubik Mono One", monospace;
+    font-size: large;
     background-color: white;
     transition: background-color 0.3s ease;
 }
 
-.start-button:hover{
+#startGame {
+    border: solid;
+    font-family: "Rubik Mono One", monospace;
+    font-size: x-large;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover,
+#openModal:hover,
+#startGame:hover {
     background-color: darkgray;
 }
 
@@ -111,7 +119,7 @@
 .label-spades,
 .label-clover {
     font-family: "Kanit", sans-serif;
-    font-size: large;
+    font-size: 25px;
 }
 
 .overall-page-layout {
@@ -141,17 +149,36 @@
     justify-content: space-evenly;
 }
 
-.center-card-match {
-    font-size: 35px;
-    text-align: center;
+.header-layout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.empty {
+    flex: 20%;
+}
+
+.card-title-layout {
+    display: flex;
+    flex: 40%;
+    font-size: 80px;
+    justify-content: center;
+}
+
+.icons-layout {
+    display: flex;
 }
 
 .center-card-title {
     font-family: "Permanent Marker", cursive;
+    color: rgb(220, 30, 30);
 }
 
 .center-match-title {
     font-family: "ADLaM Display", system-ui;
+    color: rgb(252, 5, 54);
 }
 
 .info-button,
@@ -203,10 +230,28 @@
     text-align-last: center;
 }
 
+.p-font {
+    font-family: "Kanit", sans-serif;
+    font-size: x-large;
+}
+
+#modalTitle {
+    font-family: "Kanit", sans-serif;
+    font-size: xx-large;
+}
+
 #gameScore,
 #liveScore,
 #finalScore {
-    font-family: "Jersey 10", sans-serif;
+    font-family: "Rubik Mono One", monospace;
+    font-size: large;
+}
+#exitGame,
+#playAgain,
+#revealCards {
+    border: solid;
+    font-family: "Rubik Mono One", monospace;
+    font-size: medium;
 }
 
 .sum-counter-position,
@@ -225,7 +270,7 @@
 .label-total-sum {
     font-family: "Merriweather", serif;
     font-weight: bolder;
-    font-size: x-large;
+    font-size: 25px;
 }
 
 .center-sum,
@@ -233,7 +278,7 @@
 .center-lives,
 .center-total-sum {
     font-family: "Rubik Mono One", monospace;
-    font-size: 300%;
+    font-size: 50px;
 }
 
 td, th {

@@ -196,9 +196,6 @@ const suites = ["Diamond", "Spades", "Heart", "Clover"];
 CreateButtons(values, suites);
 
 let cards = ArrayOfNumbers(values, suites);
-for (let card of cards) {
-    console.log(card);
-}
 
 CreateCards(cards);
 SumOfTheCardValues(cards);
