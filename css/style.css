@@ -41,10 +41,10 @@
 
 .start-button {
     border:solid;
-    font-size: 30px;
+    font-size: x-large;
     width: -webkit-fill-available;
     font-family: "Rubik Mono One", monospace;
-    font-size: large;
+    font-weight: bolder;
     background-color: white;
     transition: background-color 0.3s ease;
 }

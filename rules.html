@@ -31,6 +31,9 @@
                     the player clicks the correct card.</li>
                 <li>The player will be provided with counters for the total sum, score, and lives on the right side of
                     the page.</li>
+                <li>Info button - explains the rules in case the player forgets the rules.</li>
+                <li>Reset button - to reset the grid and play the game again from the start</li>
+                <li>Exit button - this will direct the player to the start page</li>
             </ul>
             <h5>Additional Information:</h5>
             <ul>
@@ -39,8 +42,9 @@
                 <li>This game is linear, meaning it does not allow the user to go back to the previous page.</li>
             </ul>
             <h5>Important information:</h5>
-            Once the player refresh or direct inbetween the pages to progress would not be saved. So avoid moving back
-            and forth or refreshing the page during the game
+            <li>Once the player refresh or direct inbetween the pages to progress would not be saved. So avoid moving
+                back
+                and forth or refreshing the page during the game.</li>
         </div>
         <div class="right-border">
             <h5>Game Rules:</h5>
@@ -64,6 +68,8 @@
                             will change to red.</li>
                         <li>If the player guesses the right card value but the card suit is wrong, there will be no
                             changes in the card, but the button color will change to yellow.</li>
+                        <li>After guessing the rigth card, and the player clicks same card value but different suite
+                            still the life will be reduced because the cards values was not duplicated.</li>
                         <li>For every correct guess, the player will get 100 points.</li>
                         <li>For consecutive correct guesses, the player will get double the score (2 * 100).</li>
                         <li>For every wrong guess, including misguesses (indicated by a yellow button), one life will be
@@ -73,6 +79,10 @@
                 <li>
                     <h5>Hints</h5>
                     <ul>
+                        <li>No duplication of card value - The cards only exists once in the grid, the card value or
+                            card itself would not exist again in the grid.</li>
+                        <li>Reveal cards - If the player loses the game, there will be a option to show the rest of the
+                            card in the deck, but this option would not be displayed if the player wins the game.</li>
                         <li>There are two counters displaying numbers which are the sums of the values of the cards.
                         </li>
                         <li>Total Sum - The total sum value will change from game to game based on the values of the
@@ -84,11 +94,11 @@
                 <li>
                     <h5>Card Values</h5>
                     <ul>
-                        <li>A = 1</li>
+                        <li>Ace -> A = 1</li>
                         <li>The values from 2 to 10 have the same value as the card number</li>
-                        <li>J = 11</li>
-                        <li>Q = 12</li>
-                        <li>K = 13</li>
+                        <li>Jack -> J = 11</li>
+                        <li>Queen -> Q = 12</li>
+                        <li>King -> K = 13</li>
                     </ul>
                 </li>
             </ul>

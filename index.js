@@ -197,6 +197,10 @@ CreateButtons(values, suites);
 
 let cards = ArrayOfNumbers(values, suites);
 
+/*for (let card of cards) {
+    console.log(card);
+}*/
+
 CreateCards(cards);
 SumOfTheCardValues(cards);
 
@@ -204,8 +208,10 @@ function DisplayGameResultModal(result, score) {
     let message = '';
     if (result === 'win') {
         message = 'Congratulations, you have won the game!';
+        document.getElementById('revealCards').style.display = 'none';
     } else {
         message = 'Game Over. You have lost the game.';
+        document.getElementById('revealCards').style.display = 'block';
     }
 
     let lives_score = lives * 100;
