@@ -1,3 +1,30 @@
+const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+const suites = ["Diamond", "Spades", "Heart", "Clover"];
+const buttons = document.querySelectorAll('.card-button');
+
+let cards = ArrayOfNumbers(values, suites);
+let total_sum_of_cards = 0;
+let score = 0;
+let combo = 0;
+let lives = localStorage.getItem('selectedValue');
+
+var display_score = document.getElementById("scores");
+var display_lives = document.getElementById("lives");
+
+for (let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener('click', function () {
+        ValidateUserInput(buttons[i]);
+    });
+}
+
+display_score.innerHTML = `${score}`;
+display_lives.innerHTML = `${lives}`;
+
+CreateButtons(values, suites);
+CreateCards(cards);
+SumOfTheCardValues(cards);
+
+
 function CreateButtons(values, suites) {
     const table = document.getElementById("card-table");
 
@@ -81,7 +108,6 @@ function ArrayOfNumbers(numbers, kind) {
     return filteredCards.slice(0, 9);
 }
 
-let total_sum_of_cards = 0;
 function SumOfTheCardValues(cards) {
     let sum = 0;
     for (let card of cards) {
@@ -93,22 +119,6 @@ function SumOfTheCardValues(cards) {
     document.getElementById("total_sum_of_cards").innerHTML = `${total_sum_of_cards}`;
     return sum;
 }
-
-const buttons = document.querySelectorAll('.card-button');
-for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', function () {
-        ValidateUserInput(buttons[i]);
-    });
-}
-
-let score = 0;
-let combo = 0;
-let lives = localStorage.getItem('selectedValue');
-var display_score = document.getElementById("scores");
-var display_lives = document.getElementById("lives");
-
-display_score.innerHTML = `${score}`;
-display_lives.innerHTML = `${lives}`;
 
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
@@ -189,20 +199,6 @@ function ReplaceCardImage(newSource, cardIndex) {
         image_reveal[cardIndex].isopen = true;
     }
 }
-
-const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const suites = ["Diamond", "Spades", "Heart", "Clover"];
-
-CreateButtons(values, suites);
-
-let cards = ArrayOfNumbers(values, suites);
-
-/*for (let card of cards) {
-    console.log(card);
-}*/
-
-CreateCards(cards);
-SumOfTheCardValues(cards);
 
 function DisplayGameResultModal(result, score) {
     let message = '';
