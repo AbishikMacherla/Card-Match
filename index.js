@@ -215,7 +215,7 @@ function DisplayGameResultModal(result, score) {
     }
 
     let lives_score = lives * 100;
-    let finalScore = score + lives_score
+    let finalScore = score + lives_score;
 
     document.getElementById('gameScore').textContent = score;
     document.getElementById('liveScore').textContent = lives_score;
