@@ -1,11 +1,11 @@
 function CreateButtons(values, suites) {
-    const table = document.querySelector('table');
+    const table = document.getElementById("card-table");
 
     const labelRow = document.createElement('tr');
     for (let suit of suites) {
         const labelData = document.createElement('td');
         labelData.textContent = suit;
-        labelData.classList = `label-${suit.toLowerCase()}`;
+        labelData.classList = `card-match-label-card-suite`;
         labelRow.appendChild(labelData);
     }
     table.appendChild(labelRow);
@@ -37,7 +37,7 @@ function CreateButtons(values, suites) {
 }
 
 function CreateCards(cards) {
-    const gridContainer = document.querySelector('.grid-container');
+    const gridContainer = document.querySelector('.card-match-card-grid-container');
 
     for (let card of cards) {
         const gridItem = document.createElement('div');

@@ -18,7 +18,7 @@
 
 <body class="common-background">
     <div class="rules-page-layout">
-        <div class="left-border">
+        <div class="rules-border-box">
             <h5>Objective of Card Match</h5>
             <p>
                 The game "Card Match" is a card guessing game in which the player is required to guess the cards in the
@@ -46,7 +46,7 @@
                 back
                 and forth or refreshing the page during the game.</li>
         </div>
-        <div class="right-border">
+        <div class="rules-border-box">
             <h5>Game Rules:</h5>
             <ul>
                 <li>
@@ -105,27 +105,27 @@
             </p>
         </div>
     </div>
-    <div class="center-continue">
-        <button type="button" class="btn btn-default" id="openModal">Continue</button>
+    <div>
+        <button type="button" class="button-style btn-default" id="openModal">Continue</button>
         <div id="modeSelectionModal" class="modal" role="dialog">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
                         <h4>Select Game Mode:</h4>
                         <div>
-                            <label class="easy-mode">
+                            <label class="rules-modal-label-options">
                                 <input type="radio" id="easy" name="gameMode" value="18"> Easy
                             </label><br>
-                            <label class="medium-mode">
+                            <label class="rules-modal-label-options">
                                 <input type="radio" id="medium" name="gameMode" value="15"> Medium
                             </label><br>
-                            <label class="hard-mode">
+                            <label class="rules-modal-label-options">
                                 <input type="radio" id="hard" name="gameMode" value="12"> Hard
                             </label>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button id="startGame" class="btn btn-default">Play Card Match</button>
+                        <button id="startGame" class="button-style btn-default">Play Card Match</button>
                     </div>
                 </div>
             </div>

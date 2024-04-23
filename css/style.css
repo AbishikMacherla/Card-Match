@@ -20,16 +20,19 @@
     object-fit: cover;
 }
 
-#openModal {
+.button-style {
     border: solid;
     background-color: white;
-    position: absolute;
-    top: 85%;
-    left:50%;
     font-family: "Rubik Mono One", monospace;
     font-size: x-large;
-    font-weight: 300;
     transition: background-color 0.3s ease;
+}
+
+#openModal {
+    position: absolute;
+    top: 85%;
+    left:45%;
+    font-weight: 300;
 }
 
 .centering {
@@ -40,27 +43,13 @@
 }
 
 .start-button {
-    border:solid;
-    font-size: x-large;
     width: -webkit-fill-available;
-    font-family: "Rubik Mono One", monospace;
     font-weight: bolder;
-    background-color: white;
-    transition: background-color 0.3s ease;
 }
 
-.easy-mode,
-.medium-mode,
-.hard-mode {
+.rules-modal-label-options {
     font-family: "Rubik Mono One", monospace;
     font-size: x-large;
-}
-
-#startGame {
-    border: solid;
-    font-family: "Rubik Mono One", monospace;
-    font-size: x-large;
-    transition: background-color 0.3s ease;
 }
 
 .start-button:hover,
@@ -75,12 +64,6 @@
     color: rgb(212, 11, 11);
 }
 
-.match-title {
-    font-size: 140px;
-    font-family: "ADLaM Display", system-ui;
-    color: crimson;
-}
-
 .rules-page-layout {
     display: flex;
     flex-direction: row;
@@ -90,14 +73,16 @@
     margin: 50px;
 }
 
-.left-border {
+.rules-border-box {
     border: 2px solid;
     padding: 5%;
     background-color: rgba(162, 146, 146, 0.5);
     overflow-y: auto;
     max-height: 650px;
+    width: 50%;
 }
-.right-border {
+
+.rules-border-info-box {
     border: 2px solid;
     padding: 5%;
     background-color: rgba(162, 146, 146, 0.5);
@@ -121,19 +106,9 @@
     background: #555;
 }
 
-.label-diamond,
-.label-heart,
-.label-spades,
-.label-clover {
+.card-match-label-card-suite {
     font-family: "Kanit", sans-serif;
     font-size: 25px;
-}
-
-.overall-page-layout {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
 }
 
 .card-button {
@@ -150,13 +125,13 @@
     padding: 2%;
 }
 
-.counter-position {
+.card-match-counter-flex-layout {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
-.header-layout {
+.card-match-flex-layout {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -178,28 +153,40 @@
     display: flex;
 }
 
-.center-card-title {
+.card-match-header {
     font-family: "Permanent Marker", cursive;
     color: rgb(220, 30, 30);
 }
 
-.center-match-title {
-    font-family: "ADLaM Display", system-ui;
-    color: rgb(252, 5, 54);
-}
-
-.info-button,
-.reset-button,
-.exit-button {
+.card-match-action-icons {
     text-align: end;
+
+    button {
+        background: none;
+        border: none;
+    }
+
+    img {
+    width: 50px;
+    height: 50px;
+    }
 }
 
-.buttons-postion {
+.card-match-modal-width {
+    max-width: 750px !important;
+}
+
+.card-match-modal-close {
+    width: 20px;
+    height: 20px;
+}
+
+.card-match-buttons-postion {
     display: flex;
     background-color: #f1eeeea3;
 }
 
-.grid-container {
+.card-match-card-grid-container {
     display: grid;
     width: 500px;
     grid-gap: 30px;
@@ -227,7 +214,7 @@
     transform: rotateY(180deg);
 }
 
-.counter-box {
+.card-match-counter-box-size {
     height: 100px;
     width: 180px;
     border: thick;
@@ -238,53 +225,41 @@
     text-align-last: center;
 }
 
-.p-font {
+.card-match-modal-body-font {
     font-family: "Kanit", sans-serif;
     font-size: x-large;
 }
 
-#modalTitle {
+.card-match-modal-title-font {
     font-family: "Kanit", sans-serif;
     font-size: xx-large;
 }
 
-#gameScore,
-#liveScore,
-#finalScore {
+.card-match-modal-body-score-font {
     font-family: "Rubik Mono One", monospace;
     font-size: large;
 }
-#exitGame,
-#playAgain,
-#revealCards {
+
+.card-match-icons-shape {
     border: solid;
     font-family: "Rubik Mono One", monospace;
     font-size: medium;
 }
 
-.sum-counter-position,
-.score-counter-position,
-.live-counter-position,
-.total-sum-counter-position {
+.card-match-counter-position {
     display: flex;
     flex-direction: column;
     top: 25%;
     left: 65%;
 }
 
-.label-sum,
-.label-score,
-.label-live,
-.label-total-sum {
+.card-match-label-text {
     font-family: "Merriweather", serif;
     font-weight: bolder;
     font-size: 25px;
 }
 
-.center-sum,
-.center-score,
-.center-lives,
-.center-total-sum {
+.card-match-center-counter-text {
     font-family: "Rubik Mono One", monospace;
     font-size: 50px;
 }
@@ -303,17 +278,4 @@ button {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-.reset-button button,
-.exit-button button,
-.info-button button {
-    background: none;
-    border: none;
-}
-.reset-button img,
-.exit-button img,
-.info-button img {
-    width: 50px;
-    height: 50px;
 }

@@ -21,29 +21,28 @@
 </head>
 
 <body class="common-background">
-    <div class="header-layout">
+    <div class="card-match-flex-layout">
         <div class="empty"></div>
         <div class="card-title-layout">
-            <p class="center-card-title">Card</p>
-            <p class="center-match-title">Match</p>
+            <p class="card-match-header">Card Match</p>
         </div>
         <div class="icons-layout">
-            <div class="info-button">
+            <div class="card-match-action-icons">
                 <button type="button" data-toggle="modal" data-target="#infoModal"><img src="css/Info_icon.png"
                         alt="Info"></button>
             </div>
             <div id="infoModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="infoModal"
                 aria-hidden="true">
-                <div class="modal-dialog" role="document" style="max-width: 750px;">
+                <div class="card-match-modal-width modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Game Rules</h5>
-                            <button type="button" class="close" data-dismiss="modal" alt="Close">
-                                <img src="css/Close_icon.png" width="20px" height="20px">
+                            <button type="button" data-dismiss="modal" alt="Close">
+                                <img class="card-match-modal-close" src="css/Close_icon.png">
                             </button>
                         </div>
-                        <div class="modal-body" id="infoContent">
-                            <div class="right-border">
+                        <div class="modal-body">
+                            <div class="rules-border-info-box">
                                 <ul>
                                     <li>
                                         <h5>Modes and Lives</h5>
@@ -114,65 +113,65 @@
                     </div>
                 </div>
             </div>
-            <div class="reset-button">
+            <div class="card-match-action-icons">
                 <button onclick="location.reload();"><img src="css/Refresh_icon.png" alt="Reset"></button>
             </div>
-            <div class="exit-button">
+            <div class="card-match-action-icons">
                 <button onclick="window.location.href = 'index.html';"><img src="css/Exit_icon.png" alt="Exit"></button>
             </div>
         </div>
     </div>
-    <div class="overall-page-layout">
-        <div class="buttons-postion">
+    <div class="card-match-flex-layout">
+        <div class="card-match-buttons-postion">
             <table id="card-table"></table>
         </div>
-        <div class="grid-container"></div>
-        <div class="counter-position">
-            <div class="total-sum-counter-position">
-                <label class="label-total-sum">Total Sum</label>
-                <div class="counter-box">
-                    <div class="center-total-sum" id="total_sum_of_cards"></div>
+        <div class="card-match-card-grid-container"></div>
+        <div class="card-match-counter-flex-layout">
+            <div class="card-match-counter-position">
+                <label class="card-match-label-text">Total Sum</label>
+                <div class="card-match-counter-box-size">
+                    <div class="card-match-center-counter-text" id="total_sum_of_cards"></div>
                 </div>
             </div>
-            <div class="sum-counter-position">
-                <label class="label-sum">Remaining Sum</label>
-                <div class="counter-box">
-                    <div class="center-sum" id="sum_of_cards"></div>
+            <div class="card-match-counter-position">
+                <label class="card-match-label-text">Remaining Sum</label>
+                <div class="card-match-counter-box-size">
+                    <div class="card-match-center-counter-text" id="sum_of_cards"></div>
                 </div>
             </div>
-            <div class="score-counter-position">
-                <label class="label-score">Score</label>
-                <div class="counter-box">
-                    <div class="center-score" id="scores"></div>
+            <div class="card-match-counter-position">
+                <label class="card-match-label-text">Score</label>
+                <div class="card-match-counter-box-size">
+                    <div class="card-match-center-counter-text" id="scores"></div>
                 </div>
             </div>
-            <div class="live-counter-position">
-                <label class="label-score">Lives</label>
-                <div class="counter-box">
-                    <div class="center-lives" id="lives"></div>
+            <div class="card-match-counter-position">
+                <label class="card-match-label-text">Lives</label>
+                <div class="card-match-counter-box-size">
+                    <div class="card-match-center-counter-text" id="lives"></div>
                 </div>
             </div>
         </div>
         <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="card-match-modal-width modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <p id="modalTitle"></p>
+                        <p class="card-match-modal-title-font" id="modalTitle"></p>
                     </div>
                     <div class="modal-body">
-                        <p class="p-font">Your Game score: <span id="gameScore"></span></p>
-                        <p class="p-font">Your Lives score: <span id="liveScore"></span></p>
-                        <p class="p-font">Total Score: <span id="finalScore"></span></p>
+                        <p class="card-match-modal-body-font">Your Game score: <span class="card-match-modal-body-score-font" id="gameScore"></span></p>
+                        <p class="card-match-modal-body-font">Your Lives score: <span class="card-match-modal-body-score-font" id="liveScore"></span></p>
+                        <p class="card-match-modal-body-font">Total Score: <span class="card-match-modal-body-score-font" id="finalScore"></span></p>
                     </div>
                     <div class="modal-footer">
-                        <button id="revealCards" class="btn btn-default">
-                            <img src="css/Reveal_icon.png" alt="Reveal Icon" width="20px" height="20px"> Reveal Cards
+                        <button id="revealCards" class="card-match-icons-shape btn-default">
+                            <img src="css/Reveal_icon.png" alt="Reveal Icon"> Reveal Cards
                         </button>
-                        <button id="playAgain" class="btn btn-default">
-                            <img src="css/Refresh_icon.png" alt="Reset Icon" width="20px" height="20px"> Play Again
+                        <button id="playAgain" class="card-match-icons-shape btn-default">
+                            <img src="css/Refresh_icon.png" alt="Reset Icon"> Play Again
                         </button>
-                        <button id="exitGame" class="btn btn-default" data-dismiss="modal">
-                            <img src="css/Exit_icon.png" alt="Exit Icon" width="20px" height="20px"> Exit Game
+                        <button id="exitGame" class="card-match-icons-shape btn-default" data-dismiss="modal">
+                            <img src="css/Exit_icon.png" alt="Exit Icon"> Exit Game
                         </button>
                     </div>
                 </div>
