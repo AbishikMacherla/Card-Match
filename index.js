@@ -58,7 +58,7 @@ function CreateButtons(values, suites) {
             button.style.padding = '2%';
             if (suit === 'Diamond' || suit === 'Heart') {
                 button.style.border = '2px solid red';
-            } else if (suit === 'Spades' || suit === 'Clover') {
+            } else if (suit === 'Spade' || suit === 'Clover') {
                 button.style.border = '2px solid black';
             }
             tabledata.appendChild(button);
