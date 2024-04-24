@@ -1,11 +1,12 @@
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const suites = ["Diamond", "Spades", "Heart", "Clover"];
+const suites = ["Diamond", "Spade", "Heart", "Clover"];
 const buttons = document.querySelectorAll('.card-button');
 
 let cards = ArrayOfNumbers(values, suites);
 let total_sum_of_cards = 0;
 let score = 0;
 let combo = 0;
+// This value is passed from the rules.HTML page.
 let lives = localStorage.getItem('selectedValue');
 
 var display_score = document.getElementById("scores");
@@ -24,7 +25,12 @@ CreateButtons(values, suites);
 CreateCards(cards);
 SumOfTheCardValues(cards);
 
-
+/*
+Parameter: values and suites
+values - This variable has card values of the playing cards (Ace, 2, 3,...Queen, King).
+suites - This variable has card suites of the playing card (Diamond, Heart, Spade and Clover).
+Function: This function will generate 52 cards dynamically, to avoid hard coding in HTML.
+*/
 function CreateButtons(values, suites) {
     const table = document.getElementById("card-table");
 
@@ -63,6 +69,11 @@ function CreateButtons(values, suites) {
     }
 }
 
+/*
+Parameter: cards
+cards - This variable is considered as a card which has card value and suite.
+Function: This function will generate the back of the card image dynamically, to avoid hard coding in HTML.
+*/
 function CreateCards(cards) {
     const gridContainer = document.querySelector('.card-match-card-grid-container');
 
@@ -80,6 +91,13 @@ function CreateCards(cards) {
         gridContainer.appendChild(gridItem);
     }
 }
+
+/*
+Parameter: numbers and kind
+number - This variable has card values of the playing cards (Ace, 2, 3,...Queen, King).
+kind - This variable has card suites of the playing card (Diamond, Heart, Spades and Clover). 
+Function: This function will shuffle the whole card deck randomly and only take the first nine cards from the deck.
+*/
 
 function ArrayOfNumbers(numbers, kind) {
     let uniqueCards = [];
@@ -108,6 +126,11 @@ function ArrayOfNumbers(numbers, kind) {
     return filteredCards.slice(0, 9);
 }
 
+/*
+Parameter: cards
+cards - This variable is considered as a card which has card value and suite.
+Function: This function will calculate the sum of the card values from the nine cards.
+*/
 function SumOfTheCardValues(cards) {
     let sum = 0;
     for (let card of cards) {
@@ -120,6 +143,12 @@ function SumOfTheCardValues(cards) {
     return sum;
 }
 
+/*
+Parameter: button
+button - This is the user response from the card match game.
+Function: This function validate the user input which is the clicked card and do actions to the buttons based on the selection.
+Also, does some styling, for changing the colour and calculate the combo and score of the game.
+*/
 function ValidateUserInput(button) {
     const clicked_cardSuite = button.id.split('_')[0];
     const clicked_cardNumber = button.id.split('_')[1];
@@ -175,6 +204,10 @@ function ValidateUserInput(button) {
     }
 }
 
+/*
+Function: This function will disable all the button in buttons grid to avoid any complication after the end of the game.
+Called inside ValidateUserInput function.
+*/
 function DisableAllCards() {
     const buttons = document.querySelectorAll('.card-button');
     buttons.forEach(button => {
@@ -182,6 +215,13 @@ function DisableAllCards() {
     });
 }
 
+/*
+Parameter: newSource and cardIndex
+newSorce - This variable has the location of the card image from card assets
+cardIndex - This variable has the position of the image in the image grid
+Function: This function will replace the back of the card image to the actual card image based on the card position.
+Called inside ValidateUserInput function.
+*/
 function ReplaceCardImage(newSource, cardIndex) {
     let image_reveal = cards.map((card, index) => {
         return { image_position: `A${card.card_suite}${card.card_number}`, isopen: false };
@@ -199,6 +239,14 @@ function ReplaceCardImage(newSource, cardIndex) {
         image_reveal[cardIndex].isopen = true;
     }
 }
+
+/*
+Parameter: result and score
+result - This is the result of the game which is passed from ValidateUserInput function.
+score - This is score of the player which is passed from ValidateUserInput function.
+Function: This function is basically for the modal, calculates final score.
+Also, this will display the modal and have feature such as reveal cards, exit game and play again.
+*/
 
 function DisplayGameResultModal(result, score) {
     let message = '';
@@ -236,6 +284,11 @@ function DisplayGameResultModal(result, score) {
         location.reload();
     });
 }
+
+/*
+Function: This function will reveal all the cards which has not been revealed by the player.
+This function is called inside DisplayGameResultModal function.
+*/
 
 function RevealAllCards() {
     for (let i = 0; i < cards.length; i++) {
