@@ -1,5 +1,5 @@
 const values = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
-const suites = ["Diamond", "Spade", "Heart", "Clover"];
+const suites = ["Diamond", "Spades", "Heart", "Clover"];
 const buttons = document.querySelectorAll('.card-button');
 
 let cards = ArrayOfNumbers(values, suites);
@@ -28,7 +28,7 @@ SumOfTheCardValues(cards);
 /*
 Parameter: values and suites
 values - This variable has card values of the playing cards (Ace, 2, 3,...Queen, King).
-suites - This variable has card suites of the playing card (Diamond, Heart, Spade and Clover).
+suites - This variable has card suites of the playing card (Diamond, Heart, Spades and Clover).
 Function: This function will generate 52 cards dynamically, to avoid hard coding in HTML.
 */
 function CreateButtons(values, suites) {
@@ -58,7 +58,7 @@ function CreateButtons(values, suites) {
             button.style.padding = '2%';
             if (suit === 'Diamond' || suit === 'Heart') {
                 button.style.border = '2px solid red';
-            } else if (suit === 'Spade' || suit === 'Clover') {
+            } else if (suit === 'Spades' || suit === 'Clover') {
                 button.style.border = '2px solid black';
             }
             tabledata.appendChild(button);
